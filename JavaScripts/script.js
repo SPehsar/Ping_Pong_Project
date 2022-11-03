@@ -3,8 +3,10 @@
  let hits = 0;
  
  // Start to declare canvas and its context *****************************************
+ const rightPlayerName = document.querySelector("#rightPlayerName");
 //  const rightPlayerName = document.querySelector("#rightPlayerName");
-//  const leftPlayerName = document.querySelector("#leftPlayerName");
+ console.log(rightPlayerName)
+ const leftPlayerName = document.querySelector("#leftPlayerName");
  const canvas = document.getElementById('container');
  const ctx = canvas.getContext("2d"); // The CanvasRenderingContext2D interface, 
  // part of the Canvas API, provides the 2D rendering context for the drawing surface 
@@ -189,8 +191,8 @@ function drawLeftPlayer() {
  // End of resetBall function <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
 
 
- // Start of collisionTimeLag function <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
- function collisionTimeLag() {
+ // Start of impactDelay function <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+ function impactDelay() {
      activated = false
      setTimeout(() => {
          activated = true
@@ -198,7 +200,7 @@ function drawLeftPlayer() {
  }
  
  
- function setScore() { // set how the lose case evaluated
+ function setDaScore() { // set how the lose case evaluated
      if (ball.positionX > canvas.width - (rightPlayer.width)) {
          game.leftScore++
          resetBall()
@@ -212,11 +214,11 @@ function drawLeftPlayer() {
      document.getElementsByClassName('rightSide')[0].textContent = rightPlayer.name + " = " + game.rightScore // rightscore data 
      // pass to class name rightSide in HTML Game
  }
- // End of collisionTimeLag function <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+ // End of impactDelay function <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
 
  
- // Start of gameOver function <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
- function gameOver(){   //   resultPage feed
+ // Start of gameIsOver function <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+ function gameIsOver(){   //   resultPage feed
      if(game.leftScore === game.maximumScore){
          sessionStorage.setItem("result", "Left Player Name");  // **** appears on the resultPage
          window.location.href = "resultPage.html";
@@ -227,7 +229,7 @@ function drawLeftPlayer() {
          resetStatsToZero()
      }
  }
- // End of gameOver function <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+ // End of gameIsOver function <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
 
 
  // Start of keyStatus function <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
@@ -278,12 +280,12 @@ function drawLeftPlayer() {
                     audio.play();
                     hits++;
                     ball.speed_X = -ball.speed_X
-                    collisionTimeLag()
+                    impactDelay()
                 }
             }
  
-     setScore()
-     gameOver()
+     setDaScore()
+     gameIsOver()
  
      ball.positionX += ball.speed_X;
      ball.positionY += ball.speed_Y;
