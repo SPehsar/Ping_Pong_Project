@@ -19,10 +19,10 @@
       }
 
       function goGamePage() {
-        const rightPlayerName = document.querySelector("#rightPlayerName");
-        const leftPlayerName = document.querySelector("#leftPlayerName");
+        // const rightPlayerName = document.querySelector("#rightPlayerName");
+        // const leftPlayerName = document.querySelector("#leftPlayerName");
 
-        console.log(rightPlayerName);
+        // console.log(rightPlayerName);
         // leftPlayer.name = leftPlayerName.value
         // sessionStorage.setItem("leftPlayer.player", "leftPlayerName.value"); // **** passes to the left side player to set the name
         // sessionStorage.setItem("rightPlayer.player", "rightPlayerName.value"); // **** passes to the right side player to set the name
@@ -94,21 +94,26 @@
           <source src="media/Lets_Play_Pong.mp4" type="video/ogg" />
         </video>
       </div>
+
       <div class="button">
         <div class="button-outter">
+
           <button id="gameStart-button" onclick="switchVisible();">
             Let's Play
           </button>
-          <!-- <span onclick="newLocation()">Start</span> -->
+          
         </div>
       </div>
+
     </div>
 
     <div id="Div2">
       <p class="result">ENTER PLAYERS NAME</p>
       <br />
+
       <div>
         <form>
+
           <div>
             <label for="leftPlayerName">Left Side Player's Name: </label>
             <input type="text" id="fname" />
@@ -119,8 +124,10 @@
             <label for="rightPlayerName">Right Side Player's Name: </label>
             <input type="text" id="chosen-element" />
           </div>
+
         </form>
       </div>
+      
       <br /><br /><br /><br /><br /><br />
 
       <div class="button">
@@ -131,6 +138,7 @@
           </button>
         </div>
       </div>
+
     </div>
   </body>
 </html>
