@@ -3,8 +3,10 @@
  let hits = 0;
  
  // Start to declare canvas and its context *****************************************
- const canvas = document.getElementById('container')
- const context = canvas.getContext("2d")
+ const canvas = document.getElementById('container');
+ const ctx = canvas.getContext("2d"); // The CanvasRenderingContext2D interface, 
+ // part of the Canvas API, provides the 2D rendering context for the drawing surface 
+ // of a <canvas> element. It is used for drawing shapes, text, images, and other objects.
  sessionStorage.setItem("result", "None"); // Set the value of the specified 
  // local/session storage item.
 // End  to declare canvas and its context *****************************************
@@ -38,7 +40,7 @@
  const leftPlayer = {
     name: 'Left Side Player',
     // name: (document.getElementsByClassName('leftSide')[0].textContent = game.leftScore),  
-
+    // name: leftPlayerName.value,
      height: 100,
      width: 10,
      positionX: 10,
@@ -86,25 +88,25 @@
  
 // Start Update and Draw objects on the screen *********************************************
 function drawRightPlayer() {
-    context.beginPath();
-    context.fillStyle = rightPlayer.color;
-    context.rect(rightPlayer.positionX, rightPlayer.positionY, rightPlayer.width, rightPlayer.height);
-    context.fill();
-    context.closePath();
+    ctx.beginPath();
+    ctx.fillStyle = rightPlayer.color;
+    ctx.rect(rightPlayer.positionX, rightPlayer.positionY, rightPlayer.width, rightPlayer.height);
+    ctx.fill();
+    ctx.closePath();
 }
 
 function drawLeftPlayer() {
-     context.beginPath();
-     context.fillStyle = leftPlayer.color;
-     context.rect(leftPlayer.positionX, leftPlayer.positionY, leftPlayer.width, leftPlayer.height);
-     context.fill();
-     context.closePath();
+    ctx.beginPath();
+    ctx.fillStyle = leftPlayer.color;
+    ctx.rect(leftPlayer.positionX, leftPlayer.positionY, leftPlayer.width, leftPlayer.height);
+    ctx.fill();
+    ctx.closePath();
  }
  
  function drawBall() {
-     context.beginPath();
-     context.fillStyle = ball.color;
-     context.arc(ball.positionX, ball.positionY, ball.radius, 0, Math.PI * 2);  // This for a circular ball, which is 
+    ctx.beginPath();
+    ctx.fillStyle = ball.color;
+    ctx.arc(ball.positionX, ball.positionY, ball.radius, 0, Math.PI * 2);  // This for a circular ball, which is 
      // a fancy choice and I prefer it. The CanvasRenderingContext2D.arc() method of the Canvas 2D API adds a circular 
      // arc to the current sub-path.
      /*
@@ -117,7 +119,7 @@ function drawLeftPlayer() {
         To make a full circle, the arc begins at an angle of 0 radians (0°), and ends at an angle of 2π radians (360°).
      */
 
-     // context.fillRect(ball.positionX, ball.positionY, 12, 12); // This for a rectangullar ball.  Some adjustment needs 
+     // ctx.fillRect(ball.positionX, ball.positionY, 12, 12); // This for a rectangullar ball.  Some adjustment needs 
      // to be made if using this; but it works FileSystemEntry. 
      /*
         The CanvasRenderingContext2D.fillRect() method of the Canvas 2D API draws a rectangle that is filled according to 
@@ -135,13 +137,13 @@ function drawLeftPlayer() {
         height: The rectangle's height. Positive values are down, and negative are up.
      */
 
-     context.fill();
-     context.closePath();
+        ctx.fill();
+        ctx.closePath();
  }
  
  
  function drawAllObjects() {  // canvas and palyers/ball draw
-     context.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
      drawLeftPlayer()
      drawRightPlayer()
      drawBall()
@@ -317,7 +319,7 @@ function drawLeftPlayer() {
   
 
  document.addEventListener('keyup', (event) => {
-    let name = event.key;
+    // let name = event.key;
     let code = event.code;
 
     if (code === 'KeyA') {

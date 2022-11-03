@@ -7,6 +7,7 @@
     <title>BW Ping Pong</title>
     <link rel="icon" href="images/BookWorm.png" type="image/x-icon" />
     <link href="Stylesheets/indexStyle.css" rel="stylesheet" />
+    <script defer src="JavaScripts/script.js"></script>
     <script>
       function switchVisible() {
         if (document.getElementById("Div1")) {
@@ -18,16 +19,17 @@
       }
 
       function goGamePage() {
+        const rightPlayerName = document.querySelector("#rightPlayerName");
+        const leftPlayerName = document.querySelector("#leftPlayerName");
+
+        console.log(rightPlayerName);
+        // leftPlayer.name = leftPlayerName.value
+        // sessionStorage.setItem("leftPlayer.player", "leftPlayerName.value"); // **** passes to the left side player to set the name
+        // sessionStorage.setItem("rightPlayer.player", "rightPlayerName.value"); // **** passes to the right side player to set the name
+
         window.location.href = "gamePage.html";
+
       }
-
-      const rightPlayerName = document.querySelector("#rightPlayerName");
-      const leftPlayerName = document.querySelector("#leftPlayerName");
-
-      console.log(rightPlayerName)
-
-      // sessionStorage.setItem("leftPlayer.player", "leftPlayerName.value"); // **** appears on the resultPage
-      // sessionStorage.setItem("rightPlayer.player", "rightPlayerName.value"); // **** appears on the resultPage
       // window.location.href = "gamePage.html";
 
       // function playPause() {
