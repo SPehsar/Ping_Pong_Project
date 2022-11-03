@@ -3,6 +3,8 @@
  let hits = 0;
  
  // Start to declare canvas and its context *****************************************
+//  const rightPlayerName = document.querySelector("#rightPlayerName");
+//  const leftPlayerName = document.querySelector("#leftPlayerName");
  const canvas = document.getElementById('container');
  const ctx = canvas.getContext("2d"); // The CanvasRenderingContext2D interface, 
  // part of the Canvas API, provides the 2D rendering context for the drawing surface 
@@ -51,6 +53,7 @@
  
  const rightPlayer = {
      name: 'Right Side Player',
+    //  name: rightPlayerName.value,
     //  player: (document.getElementsByClassName('rightSide')[0].textContent = game.rightScore ),// rightscore data 
      // pass to class name rightSide in HTML Game
      height: 100,
@@ -70,7 +73,7 @@
      rightScore: 0,   // intial  score
      leftScore: 0,  // intial  score
      turn: 0,
-     maximumScore: 8,  // what top score you want to be
+     maximumScore: 4,  // what top score you want to be
      speedIncreaseHit: 3, // number of ticks we want increase the speed
  }
  
@@ -118,6 +121,8 @@ function drawLeftPlayer() {
         The arc is given an ball.positionX, a y-coordinate of ball.positionY, and a radius of ball.radius. 
         To make a full circle, the arc begins at an angle of 0 radians (0°), and ends at an angle of 2π radians (360°).
      */
+
+      // ******************************************* Chosing Rectangular Ball Instead ***************************************  
 
      // ctx.fillRect(ball.positionX, ball.positionY, 12, 12); // This for a rectangullar ball.  Some adjustment needs 
      // to be made if using this; but it works FileSystemEntry. 
