@@ -33,7 +33,7 @@
 
 // Start to define needed objects ***************************************************
  const ball = {
-     radius: 9,  // large diameter for beginers
+     radius: 9,  // large diameter for beginNers
      color: '#00FF00',  // neon color // Hourbour color
      positionX: canvas.width / 2 + 9,
      positionY: canvas.height / 2 + 9,
@@ -75,7 +75,7 @@
      rightScore: 0,   // intial  score
      leftScore: 0,  // intial  score
      turn: 0,
-     maximumScore: 4,  // what top score you want to be
+     maximumScore: 3,  // what top score you want to be
      speedIncreaseHit: 3, // number of ticks we want increase the speed
  }
  
