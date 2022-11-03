@@ -9,6 +9,18 @@
     <link href="Stylesheets/indexStyle.css" rel="stylesheet" />
     <script defer src="JavaScripts/script.js"></script>
     <script>
+
+      function saveNamesInSessionStorage() { // to get 
+      var player1 = document.getElementById("play1").value; // Getting value of user's input
+      var player2 = document.getElementById("play2").value; // Getting value of user's input
+
+      sessionStorage.setItem("leftPlayer", player1); // Storing user's input in a storage 
+      window.location.href = "gamePage.html";
+
+      sessionStorage.setItem("rightPlayer", player2); // Storing user's input in a storage 
+      window.location.href = "gamePage.html";
+      }
+
       function switchVisible() {
         if (document.getElementById("Div1")) {
           if (document.getElementById("Div1").style.display !== "none") {
@@ -18,18 +30,37 @@
         }
       }
 
-      function goGamePage() {
-        // const rightPlayerName = document.querySelector("#rightPlayerName");
-        // const leftPlayerName = document.querySelector("#leftPlayerName");
+   
+      // // function next() {
+      // //   var player1 = document.getElementById("play1").value;
+      // //   var player2 = document.getElementById("play2").value;
+      // //   if (player1 === "" || player2 === "") {
+      // //     document.getElementById("error").style.color = "red";
+      // //     document.getElementById("error").innerHTML =
+      // //       "Please enter both names";
+      // //   } else {
+      // //     // location.href = "gamePage.html";
+      // //   }
+      // //   document.getElementById("name1").innerHTML = player1.value;
+      // //   document.getElementById("name2").innerHTML = player2.value;
+      // //   localStorage["player1"] = player1;
+      // //   localStorage["player2"] = player2;
+      // //   console.log(player1, player2);
+      //   // window.alert(player1)
+      //   // document.write(player1 + "OOOOO")
+      //   // // location.href = "gamePage.html";
+      //   // }
 
-        // console.log(rightPlayerName);
-        // leftPlayer.name = leftPlayerName.value
-        // sessionStorage.setItem("leftPlayer.player", "leftPlayerName.value"); // **** passes to the left side player to set the name
-        // sessionStorage.setItem("rightPlayer.player", "rightPlayerName.value"); // **** passes to the right side player to set the name
+      //   // const rightPlayerName = document.querySelector("#rightPlayerName");
+      //   // const leftPlayerName = document.querySelector("#leftPlayerName");
 
-        window.location.href = "gamePage.html";
+      //   // console.log(rightPlayerName);
+      //   // leftPlayer.name = leftPlayerName.value
+      //   // sessionStorage.setItem("leftPlayer.player", "leftPlayerName.value"); // **** passes to the left side player to set the name
+      //   // sessionStorage.setItem("rightPlayer.player", "rightPlayerName.value"); // **** passes to the right side player to set the name
 
-      }
+      //   window.location.href = "gamePage.html";
+      // }
       // window.location.href = "gamePage.html";
 
       // function playPause() {
@@ -84,8 +115,11 @@
       //     window.alert ("you didn't enter a last name ")
       //     document.getElementById("block").value//go back to Entrance page
     </script>
+
   </head>
+
   <body>
+
     <div id="Div1" style="text-align: center">
       <p class="result">Welcome to the Ping Pong Game Page</p>
       <div>
@@ -97,48 +131,51 @@
 
       <div class="button">
         <div class="button-outter">
-
           <button id="gameStart-button1" onclick="switchVisible();">
             Let's Play
           </button>
-          
         </div>
       </div>
-
     </div>
 
     <div id="Div2">
       <p class="result">ENTER PLAYERS NAME</p>
       <br />
 
-      <div>
+      <div class="col-lg-4 col-md-4 col-sm-12 form">
         <form>
-
-          <div>
-            <label for="leftPlayerName">Left Side Player's Name: </label>
-            <input type="text" id="leftPlayerName" />
+          <small class="form-text text-muted"
+            ></small
+          >
+          <div class="form-group">
+            <label for="player1">Player 1 Name:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="play1"
+              aria-describedby="play1help"
+            />
           </div>
-          <br />
-
-          <div>
-            <label for="rightPlayerName">Right Side Player's Name: </label>
-            <input type="text" id="rightPlayerName" />
+          <div class="form-group">
+            <label for="player1">Player 2 Name: </label>
+            <input
+              type="text"
+              class="form-control"
+              id="play2"
+              aria-describedby="play1help"
+            />
           </div>
-
         </form>
-      </div>
-      
+
       <br /><br /><br /><br /><br /><br />
 
       <div class="button">
         <div class="button-outter">
           <br />
-          <button id="gameStart-button2" onclick="goGamePage()">
-            Let's Play
-          </button>
+          <button id="gameStart-button2" onclick="saveNamesInSessionStorage()">Let's Play</button>
         </div>
       </div>
-
+      
     </div>
   </body>
 </html>

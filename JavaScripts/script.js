@@ -1,12 +1,13 @@
 
+// decalaring and defining the variables
+let player1 = sessionStorage.getItem("leftPlayer");  // Fetch back user's input from 
+// the session storage from previous page
+let player2  = sessionStorage.getItem("rightPlayer");  // Fetch back user's input from  
+// the session storage from previous page
  let activated = true;
  let hits = 0;
- 
+
  // Start to declare canvas and its context *****************************************
- const rightPlayerName = document.querySelector("#rightPlayerName");
-//  const rightPlayerName = document.querySelector("#rightPlayerName");
- console.log(rightPlayerName)
- const leftPlayerName = document.querySelector("#leftPlayerName");
  const canvas = document.getElementById('container');
  const ctx = canvas.getContext("2d"); // The CanvasRenderingContext2D interface, 
  // part of the Canvas API, provides the 2D rendering context for the drawing surface 
@@ -42,9 +43,7 @@
  }
  
  const leftPlayer = {
-    name: 'Left Side Player',
-    // name: (document.getElementsByClassName('leftSide')[0].textContent = game.leftScore),  
-    // name: leftPlayerName.value,
+     name: player1,
      height: 100,
      width: 10,
      positionX: 10,
@@ -54,10 +53,7 @@
  }
  
  const rightPlayer = {
-     name: 'Right Side Player',
-    //  name: rightPlayerName.value,
-    //  player: (document.getElementsByClassName('rightSide')[0].textContent = game.rightScore ),// rightscore data 
-     // pass to class name rightSide in HTML Game
+     name: player2,
      height: 100,
      width: 10,
      color: '#39ff14', // pick color
@@ -161,6 +157,12 @@ function drawLeftPlayer() {
 
  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< fuctions that we use  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+
+//  function getPlayer() {
+//     player1 = localStorage["player1"];
+//     player2 = localStorage["player2"];
+//     console.log(player1, player2);
+//   }
   // Start of resetStatsToZero function <><><><><><><><><><><><><><><><><><><><><><><><><><><>
   function resetStatsToZero(){ //  rsestGame to reset to start clean for next round
     game.leftScore = 0
@@ -220,11 +222,11 @@ function drawLeftPlayer() {
  // Start of gameIsOver function <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
  function gameIsOver(){   //   resultPage feed
      if(game.leftScore === game.maximumScore){
-         sessionStorage.setItem("result", "Left Player Name");  // **** appears on the resultPage
+         sessionStorage.setItem("result", leftPlayer.name);  // **** appears on the resultPage
          window.location.href = "resultPage.html";
          resetStatsToZero()
      }else if(game.rightScore === game.maximumScore){
-         sessionStorage.setItem("result", "Right  Player Name");   // **** appears on the resultPage
+         sessionStorage.setItem("result", rightPlayer.name);   // **** appears on the resultPage
          window.location.href = "resultPage.html";
          resetStatsToZero()
      }
@@ -295,7 +297,8 @@ function drawLeftPlayer() {
  
  // Start loop through game function ********************************************************************************
  function loopingThroughGame() {
-     keyStatus()
+    // getPlayer()
+    keyStatus()
      ballMovmentUpdate()
      drawAllObjects()
      requestAnimationFrame(loopingThroughGame);// This tells the browser that you wish to perform an animation 
@@ -368,7 +371,8 @@ function drawLeftPlayer() {
 // +++++++++++++++++++++++++++++++++++++++++++ End of Event handlers / listners ++++++++++++++++++++++++++++++++++++++++++
 
 
- requestAnimationFrame(loopingThroughGame); // This window method Tells the browser that you wish to perform an
+//  ************** Following calls the whole game starts:
+ requestAnimationFrame(loopingThroughGame); // This window method tells the browser that you wish to perform an
  // animation and requests that the browser calls a specified function to update an animation before the next repaint.
  updateingTheDefault();   //  call to updateingTheDefault function
 
