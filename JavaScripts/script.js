@@ -1,4 +1,5 @@
 
+// *********************************************************************************
 // decalaring and defining the variables
 let player1 = sessionStorage.getItem("leftPlayer");  // Fetch back user's input from 
 // the session storage from previous page
@@ -38,8 +39,8 @@ let player2  = sessionStorage.getItem("rightPlayer");  // Fetch back user's inpu
      color: '#00FF00',  // neon color // Hourbour color
      positionX: canvas.width / 2 + 9,
      positionY: canvas.height / 2 + 9,
-     speed_X: 2,  // 1,2,3, low, medium, high
-     speed_Y: 2  // 1,2,3, low, medium, high
+     speed_X: 3,  // 1,2,3, low, medium, high
+     speed_Y: 3  // 1,2,3, low, medium, high
  }
  
  const leftPlayer = {
@@ -49,7 +50,7 @@ let player2  = sessionStorage.getItem("rightPlayer");  // Fetch back user's inpu
      positionX: 10,
      color: '#39ff14',  // pick color // neon color
      positionY: canvas.height / 2 - 100 / 2,
-     speed: 2 // 1,2,3, low, medium, high
+     speed: 10 // 1,2,3, low, medium, high
  }
  
  const rightPlayer = {
@@ -59,7 +60,7 @@ let player2  = sessionStorage.getItem("rightPlayer");  // Fetch back user's inpu
      color: '#39ff14', // pick color
      positionX: canvas.width - 20,
      positionY: canvas.height / 2 - 100 / 2,
-     speed: 2 // 1,2,3, low, medium, high
+     speed: 10 // 1,2,3, low, medium, high
  }
  // End to define needed objects ********************************************************
  
@@ -375,74 +376,3 @@ function drawLeftPlayer() {
  requestAnimationFrame(loopingThroughGame); // This window method tells the browser that you wish to perform an
  // animation and requests that the browser calls a specified function to update an animation before the next repaint.
  updateingTheDefault();   //  call to updateingTheDefault function
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//  function resizeHandler() {
-//     //  if (window.innerWidth < 560) {
-//         //  document.getElementsByClassName('small-device')[0].style.display = "flex";
-//         //  document.getElementsByClassName('canvas-container')[0].style.display = "none";
-//     //  } else {
-//     //     //  document.getElementsByClassName('small-device')[0].style.display = "none";
-//         //  document.getElementsByClassName('canvas-container')[0].style.display = "flex";
-//         //  document.getElementsByClassName('small-device')[0].style.display = "none";
-//     //  }
- 
-//      updateingTheDefault()
-//  }
- 
- 
- // Two calling functionality
-//  resizeHandler()
-//  window.addEventListener('resize', () => { resizeHandler() })  //un comment in case
