@@ -11,13 +11,26 @@
     <script>
 
       function saveNamesInSessionStorage() { // to get 
-      var player1 = document.getElementById("play1").value; // Getting value of user's input
-      var player2 = document.getElementById("play2").value; // Getting value of user's input
+      let player1 = document.getElementById("play1").value; // Getting value of user's input
+      let player2 = document.getElementById("play2").value; // Getting value of user's input
+      let maximumScore = document.getElementById("maxScore").value; // Getting value of user's input
+      let playerCount2 = document.getElementById("twoPl").value; // Getting value of user's input
+      let playerCount1 = document.getElementById("onePl").value; // Getting value of user's input
+
 
       sessionStorage.setItem("leftPlayer", player1); // Storing user's input in a storage 
       window.location.href = "gamePage.html";
 
       sessionStorage.setItem("rightPlayer", player2); // Storing user's input in a storage 
+      window.location.href = "gamePage.html";
+
+      sessionStorage.setItem("maxScoreToPlay", maximumScore); // Storing user's input in a storage 
+      window.location.href = "gamePage.html";
+
+      sessionStorage.setItem("twoPlayerGame", playerCount2); // Storing user's input in a storage 
+      window.location.href = "gamePage.html";
+
+      sessionStorage.setItem("onePlayerGame", playerCount1); // Storing user's input in a storage 
       window.location.href = "gamePage.html";
       }
 
@@ -31,89 +44,6 @@
       }
 
    
-      // // function next() {
-      // //   var player1 = document.getElementById("play1").value;
-      // //   var player2 = document.getElementById("play2").value;
-      // //   if (player1 === "" || player2 === "") {
-      // //     document.getElementById("error").style.color = "red";
-      // //     document.getElementById("error").innerHTML =
-      // //       "Please enter both names";
-      // //   } else {
-      // //     // location.href = "gamePage.html";
-      // //   }
-      // //   document.getElementById("name1").innerHTML = player1.value;
-      // //   document.getElementById("name2").innerHTML = player2.value;
-      // //   localStorage["player1"] = player1;
-      // //   localStorage["player2"] = player2;
-      // //   console.log(player1, player2);
-      //   // window.alert(player1)
-      //   // document.write(player1 + "OOOOO")
-      //   // // location.href = "gamePage.html";
-      //   // }
-
-      //   // const rightPlayerName = document.querySelector("#rightPlayerName");
-      //   // const leftPlayerName = document.querySelector("#leftPlayerName");
-
-      //   // console.log(rightPlayerName);
-      //   // leftPlayer.name = leftPlayerName.value
-      //   // sessionStorage.setItem("leftPlayer.player", "leftPlayerName.value"); // **** passes to the left side player to set the name
-      //   // sessionStorage.setItem("rightPlayer.player", "rightPlayerName.value"); // **** passes to the right side player to set the name
-
-      //   window.location.href = "gamePage.html";
-      // }
-      // window.location.href = "gamePage.html";
-
-      // function playPause() {
-      //     if (myVideo.paused)
-      //         myVideo.play();
-      //     else
-      //         myVideo.pause();
-      // }
-
-      // function makeBig() {
-      //     myVideo.width = 560;
-      // }
-
-      // function makeSmall() {
-      //     myVideo.width = 320;
-      // }
-
-      // function makeNormal() {
-      //     myVideo.width = 420;
-      // }
-
-      //     var firstName = document.getElementById("first").value
-      //     var lastName = document.getElementById("last").value
-      //     var age = document.getElementById("age").value
-      //     var isNum = " ";
-
-      //     isNum = isNum + isNaN(firstName)
-
-      //     function run () {
-      //         var firstName = document.getElementById("first").value
-      //         var lastName = document.getElementById("last").value
-      //         if (age < 10 ) {
-      //         window.alert("your too young to enter in this event!")//go back to Entrance page
-      //     } else if (age > 10) {
-      //         window.alert("welcome to the Oktoberfest website!");
-      //         document.getElementById("pass").value//go to main website
-      //     } else if (age == 10) {
-      //         window.alert("lucky! you are just barely old enough to join!")
-      //         document.getElementById("pass").value//go to main website
-      //     }
-      // }
-
-      // if (isNum == true || firstName.length ==0 || lastNamet.length ==0) {
-      //         alert("YOU NEED TO ENTER FIRST AND LAST NAME THAT ARE NOT NUMBER!");
-      //     }//go back to Entrance page
-
-      // while (firstName.length ==0) {
-      //     window.alert ("you didn't enter a first name ")
-      //     document.getElementById("block").value//go back to Entrance page
-
-      // while (lastNamet.length ==0) {
-      //     window.alert ("you didn't enter a last name ")
-      //     document.getElementById("block").value//go back to Entrance page
     </script>
 
   </head>
@@ -144,27 +74,37 @@
 
       <div class="col-lg-4 col-md-4 col-sm-12 form">
         <form>
-          <small class="form-text text-muted"
-            ></small
-          >
+          <small class="form-text text-muted"></small>
+
           <div class="form-group">
             <label for="player1">Player 1 Name:</label>
-            <input
-              type="text"
-              class="form-control"
-              id="play1"
-              aria-describedby="play1help"
-            />
+            <input type="text" class="form-control" id="play1" aria-describedby="play1help"/>
           </div>
+
           <div class="form-group">
             <label for="player1">Player 2 Name: </label>
-            <input
-              type="text"
-              class="form-control"
-              id="play2"
-              aria-describedby="play1help"
-            />
+            <input type="text" class="form-control" id="play2" aria-describedby="play1help"/>
           </div>
+
+          <div>
+            <label>Number of Players: </label>
+            <label>
+              <input type="radio" id="twoPl" value="twoPlayer" name="numOfPlayer"> Two Players </label>
+            <label>
+              <input value="onePlayer" id="onePl" type="radio" name="numOfPlayer"> One Player</label>
+          </div>
+
+          <div>
+            <label for="maxScore">Desired Maximum Score: </label>
+            <select id="maxScore" name="maxScore">
+              <option disabled selected>--Choose--</option>
+              <option>3</option>
+              <option>5</option>
+              <option>10</option>
+              <option>15</option>         
+            </select>
+          </div>
+
         </form>
 
       <br /><br /><br /><br /><br /><br />
@@ -179,3 +119,33 @@
     </div>
   </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

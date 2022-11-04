@@ -1,10 +1,16 @@
 
 // *********************************************************************************
 // decalaring and defining the variables
-let player1 = sessionStorage.getItem("leftPlayer");  // Fetch back user's input from 
+ let player1 = sessionStorage.getItem("leftPlayer");  // Fetch back user's input from 
 // the session storage from previous page
-let player2  = sessionStorage.getItem("rightPlayer");  // Fetch back user's input from  
+ let player2  = sessionStorage.getItem("rightPlayer");  // Fetch back user's input from  
 // the session storage from previous page
+ const setMaxScore  = parseInt(sessionStorage.getItem("maxScoreToPlay"));  // Fetch back user's input from  
+// the session storage from previous page
+ let twoPlayerChoice  = sessionStorage.getItem("twoPlayerGame");  // Fetch back user's input from  
+// the session storage from previous page
+ let onePlayerChoice  = sessionStorage.getItem("onePlayerGamer");  // Fetch back user's input from  
+ // the session storage from previous page
  let activated = true;
  let hits = 0;
 
@@ -72,7 +78,6 @@ let player2  = sessionStorage.getItem("rightPlayer");  // Fetch back user's inpu
      rightScore: 0,   // intial  score
      leftScore: 0,  // intial  score
      turn: 0,
-     maximumScore: 3,  // what top score you want to be
      speedIncreaseHit: 3, // number of ticks we want increase the speed
  }
  
@@ -222,11 +227,11 @@ function drawLeftPlayer() {
  
  // Start of gameIsOver function <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
  function gameIsOver(){   //   resultPage feed
-     if(game.leftScore === game.maximumScore){
+     if(game.leftScore === setMaxScore){
          sessionStorage.setItem("result", leftPlayer.name);  // **** appears on the resultPage
          window.location.href = "resultPage.html";
          resetStatsToZero()
-     }else if(game.rightScore === game.maximumScore){
+     }else if(game.rightScore === setMaxScore){
          sessionStorage.setItem("result", rightPlayer.name);   // **** appears on the resultPage
          window.location.href = "resultPage.html";
          resetStatsToZero()
@@ -299,7 +304,7 @@ function drawLeftPlayer() {
  // Start loop through game function ********************************************************************************
  function loopingThroughGame() {
     // getPlayer()
-    keyStatus()
+     keyStatus()
      ballMovmentUpdate()
      drawAllObjects()
      requestAnimationFrame(loopingThroughGame);// This tells the browser that you wish to perform an animation 
