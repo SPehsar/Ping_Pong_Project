@@ -5,11 +5,11 @@
 // the session storage from previous page
  let player2  = sessionStorage.getItem("rightPlayer");  // Fetch back user's input from  
 // the session storage from previous page
- const setMaxScore  = parseInt(sessionStorage.getItem("maxScoreToPlay"));  // Fetch back user's input from  
+ const setMaxScore  = parseInt(sessionStorage.getItem("maxScoreToPlay"));  // Fetch back user's choice from  
+// the session storage from previous page and converting it into a number
+ let twoPlayerChoice  = sessionStorage.getItem("twoPlayerGame");  // Fetch back user's choice from  
 // the session storage from previous page
- let twoPlayerChoice  = sessionStorage.getItem("twoPlayerGame");  // Fetch back user's input from  
-// the session storage from previous page
- let onePlayerChoice  = sessionStorage.getItem("onePlayerGamer");  // Fetch back user's input from  
+ let onePlayerChoice  = sessionStorage.getItem("onePlayerGamer");  // Fetch back user's choice from  
  // the session storage from previous page
  let activated = true;
  let hits = 0;
@@ -164,11 +164,7 @@ function drawLeftPlayer() {
  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< fuctions that we use  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 
-//  function getPlayer() {
-//     player1 = localStorage["player1"];
-//     player2 = localStorage["player2"];
-//     console.log(player1, player2);
-//   }
+
   // Start of resetStatsToZero function <><><><><><><><><><><><><><><><><><><><><><><><><><><>
   function resetStatsToZero(){ //  rsestGame to reset to start clean for next round
     game.leftScore = 0
