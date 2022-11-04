@@ -195,15 +195,17 @@ function drawLeftPlayer() {
  // End of resetBall function <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
 
 
- // Start of impactDelay function <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+ // Start of impactDelay function <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
  function impactDelay() {
      activated = false
      setTimeout(() => {
          activated = true
      }, 1000)
  }
+ // End of impactDelay function <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
  
- 
+
+// Start of setDaScore function <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
  function setDaScore() { // set how the lose case evaluated
      if (ball.positionX > canvas.width - (rightPlayer.width)) {
          game.leftScore++
@@ -212,13 +214,30 @@ function drawLeftPlayer() {
          game.rightScore++
          resetBall()
      }
+
+     if (leftPlayer.name.trim().length === 0){ 
+        document.getElementsByClassName('leftSide')[0].textContent = "Klingons = " + game.leftScore  // leftscore data 
+        // pass to class name leftSide in Game 
+     } else{
+        document.getElementsByClassName('leftSide')[0].textContent = leftPlayer.name + " = " + game.leftScore  // leftscore data 
+        // pass to class name leftSide in Game
+     }
  
-     document.getElementsByClassName('leftSide')[0].textContent = leftPlayer.name + " = " + game.leftScore  // leftscore data 
-     // pass to class name leftSide in Game
-     document.getElementsByClassName('rightSide')[0].textContent = rightPlayer.name + " = " + game.rightScore // rightscore data 
-     // pass to class name rightSide in HTML Game
+     if (rightPlayer.name.trim().length === 0){
+        document.getElementsByClassName('rightSide')[0].textContent = "Romulans = " + game.rightScore // rightscore data 
+        // pass to class name rightSide in HTML Game
+     } else{
+        document.getElementsByClassName('rightSide')[0].textContent = rightPlayer.name + " = " + game.rightScore // rightscore data 
+        // pass to class name rightSide in HTML Game
+     }
+
+
+    //  document.getElementsByClassName('leftSide')[0].textContent = leftPlayer.name + " = " + game.leftScore  // leftscore data 
+    //  // pass to class name leftSide in Game
+    //  document.getElementsByClassName('rightSide')[0].textContent = rightPlayer.name + " = " + game.rightScore // rightscore data 
+    //  // pass to class name rightSide in HTML Game
  }
- // End of impactDelay function <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+ // End of setDaScore function <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
 
  
  // Start of gameIsOver function <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
