@@ -11,11 +11,63 @@
     <script>
 
       function saveNamesInSessionStorage() { // to get 
-      let player1 = document.getElementById("play1").value; // Getting value of user's input
-      let player2 = document.getElementById("play2").value; // Getting value of user's input
+
+
+      //   var player11 = document.getElementById("play1").value
+      //     var player22 = document.getElementById("play2").value
+      //     var maxScore33 = document.getElementById("maxScore").value
+      //     var isNum = " ";
+
+      //     isNum = isNum + isNaN(player11)
+
+      //     function run () {
+      //         var player11 = document.getElementById("play1").value
+      //         var player22 = document.getElementById("play2").value
+              
+      // }
+
+      // if (isNum == true || player11.length ==0 || player22.length ==0) {
+      //         alert("YOU NEED TO ENTER FIRST AND LAST NAME THAT ARE NOT NUMBER!");
+      //     }//go back to Entrance page
+
+      // while (player11.length ==0) {
+      //     window.alert ("you didn't enter a name ")
+      //     document.getElementById("block").value}//go back to Entrance page
+
+      // while (player22.length ==0) {
+      //     window.alert ("you didn't enter a name ")
+      //     document.getElementById("block").value}//go back to Entrance page
+
+      let player1;
+      let player2;
+      var letters = /^[A-Za-z]+$/;
+
+
+
+
+      let p1 = document.getElementById("play1").value; // Getting value of user's input
+      let p2 = document.getElementById("play2").value; // Getting value of user's input
       let maximumScore = document.getElementById("maxScore").value; // Getting value of user's input
       let playerCount2 = document.getElementById("twoPl").value; // Getting value of user's input
       let playerCount1 = document.getElementById("onePl").value; // Getting value of user's input
+
+      if (/^[a-zA-Z]+$/.test(p1)){ 
+        player1 = p1;
+        
+         } else{
+          player1= "Klingon"
+         }
+     
+      if (/^[a-zA-Z]+$/.test(p2)){ 
+            player2 = p2;
+         } else{
+          player2 = "Romulans" 
+         }
+
+
+
+
+
 
 
       sessionStorage.setItem("leftPlayer", player1); // Storing user's input in a storage 
@@ -43,6 +95,7 @@
         }
       }
 
+          
    
     </script>
 
@@ -69,36 +122,35 @@
     </div>
 
     <div id="Div2">
-      <p class="result">ENTER PLAYERS NAME</p>
+      <p class="result">ENTER GAME REQUIRED INFORMATION</p>
       <br />
 
       <div class="col-lg-4 col-md-4 col-sm-12 form">
         <form>
           <small class="form-text text-muted"></small>
+          <div>
+            <label>Number of Players: </label>
+            <label>
+              <input type="radio" id="twoPl" value="twoPlayer" name="numOfPlayer" checked="checked" /> Two Players </label>
+            <label>
+              <input value="onePlayer" id="onePl" type="radio" name="numOfPlayer"> One Player</label>
+          </div> <br>
         <table><tr><td>
           <div class="form-group">
-            <label for="player1">Player 1 Name:</label>
+            <label for="player1">Player-1 Name:</label>
             <a href="#" alt="Alphabatic only" class="tooltip">  
-            <input type="text" class="form-control" id="play1" aria-describedby="play1help"/>
+            <input type="text" class="form-control" id="play1" name="text1" aria-describedby="play1help"/>
           </div></td></tr>
 
           <tr><td>
 
           <div class="form-group">
-            <label for="player1">Player 2 Name: </label>
+            <label for="player1">Player-2 Name: </label>
             <a href="#" alt="Alphabatic only" class="tooltip">  
             <input type="text" class="form-control" id="play2" aria-describedby="play1help"/>
           </div>
         </td></tr>
-        </table>
-
-          <div>
-            <label>Number of Players: </label>
-            <label>
-              <input type="radio" id="twoPl" value="twoPlayer" name="numOfPlayer"> Two Players </label>
-            <label>
-              <input value="onePlayer" id="onePl" type="radio" name="numOfPlayer"> One Player</label>
-          </div>
+        </table><br>
 
           <div>
             <label for="maxScore">Desired Maximum Score: </label>
@@ -113,7 +165,7 @@
 
         </form>
 
-      <br /><br /><br /><br /><br /><br />
+      <br /><br /><br /><br /><br />
 
       <div class="button">
         <div class="button-outter">

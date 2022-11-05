@@ -1,10 +1,16 @@
 
 // *********************************************************************************
 // decalaring and defining the variables
- let player1 = sessionStorage.getItem("leftPlayer");  // Fetch back user's input from 
+let player1 = sessionStorage.getItem("leftPlayer");  // Fetch back user's input from 
 // the session storage from previous page
+// verifyName(player1); // ???????
  let player2  = sessionStorage.getItem("rightPlayer");  // Fetch back user's input from  
 // the session storage from previous page
+// verifyName(player2); // ????
+//  let player1 = sessionStorage.getItem("leftPlayer");  // Fetch back user's input from 
+// // the session storage from previous page
+//  let player2  = sessionStorage.getItem("rightPlayer");  // Fetch back user's input from  
+// // the session storage from previous page
  const setMaxScore  = parseInt(sessionStorage.getItem("maxScoreToPlay"));  // Fetch back user's choice from  
 // the session storage from previous page and converting it into a number
  let twoPlayerChoice  = sessionStorage.getItem("twoPlayerGame");  // Fetch back user's choice from  
@@ -205,6 +211,28 @@ function drawLeftPlayer() {
  // End of impactDelay function <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
  
 
+
+
+
+ function verifyName(nameParam){
+    if (/^[a-zA-Z]+$/.test(nameParam)){ 
+        leftPlayer.name = player1;
+         } else{
+            leftPlayer.name = "Klingon"
+         }
+     
+    if (/^[a-zA-Z]+$/.test(nameParam)){ 
+            rightPlayer.name = player2;
+         } else{
+            rightPlayer.name = "Romulans" 
+         }
+ }
+
+
+
+
+
+
 // Start of setDaScore function <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
  function setDaScore() { // set how the lose case evaluated
      if (ball.positionX > canvas.width - (rightPlayer.width)) {
@@ -214,28 +242,55 @@ function drawLeftPlayer() {
          game.rightScore++
          resetBall()
      }
+    //  /^[a-zA-Z]+$/.test(str)
 
-     if (leftPlayer.name.trim().length === 0){ 
-        document.getElementsByClassName('leftSide')[0].textContent = "Klingons = " + game.leftScore  // leftscore data 
-        // pass to class name leftSide in Game 
-     } else{
-        document.getElementsByClassName('leftSide')[0].textContent = leftPlayer.name + " = " + game.leftScore  // leftscore data 
-        // pass to class name leftSide in Game
-     }
+
+    // if (/^[a-zA-Z]+$/.test(leftPlayer.name)){ 
+    //     document.getElementsByClassName('leftSide')[0].textContent = leftPlayer.name + " = " + game.leftScore 
+    //     // document.getElementsByClassName('leftSide')[0].textContent = "Klingons = " + game.leftScore  // leftscore data 
+    //     // pass to class name leftSide in Game 
+    //  } else{
+    //     document.getElementsByClassName('leftSide')[0].textContent = "Klingons = " + game.leftScore
+    //     // document.getElementsByClassName('leftSide')[0].textContent = leftPlayer.name + " = " + game.leftScore  // leftscore data 
+    //     // pass to class name leftSide in Game
+    //  }
  
-     if (rightPlayer.name.trim().length === 0){
-        document.getElementsByClassName('rightSide')[0].textContent = "Romulans = " + game.rightScore // rightscore data 
-        // pass to class name rightSide in HTML Game
-     } else{
-        document.getElementsByClassName('rightSide')[0].textContent = rightPlayer.name + " = " + game.rightScore // rightscore data 
-        // pass to class name rightSide in HTML Game
-     }
+    //  if (/^[a-zA-Z]+$/.test(rightPlayer.name)){ 
+    //     document.getElementsByClassName('rightSide')[0].textContent = rightPlayer.name + " = " + game.rightScore
+    //     // document.getElementsByClassName('rightSide')[0].textContent = "Romulans = " + game.rightScore // rightscore data 
+    //     // pass to class name rightSide in HTML Game
+    //  } else{
+    //     document.getElementsByClassName('rightSide')[0].textContent = "Romulans = " + game.rightScore
+    //     // document.getElementsByClassName('rightSide')[0].textContent = rightPlayer.name + " = " + game.rightScore // rightscore data 
+    //     // pass to class name rightSide in HTML Game
+    //  }
 
 
-    //  document.getElementsByClassName('leftSide')[0].textContent = leftPlayer.name + " = " + game.leftScore  // leftscore data 
-    //  // pass to class name leftSide in Game
-    //  document.getElementsByClassName('rightSide')[0].textContent = rightPlayer.name + " = " + game.rightScore // rightscore data 
-    //  // pass to class name rightSide in HTML Game
+
+
+    //  if (leftPlayer.name.trim().length === 0){ 
+    //     document.getElementsByClassName('leftSide')[0].textContent = "Klingons = " + game.leftScore  // leftscore data 
+    //     // pass to class name leftSide in Game 
+    //     sessionStorage.setItem("result", "Klingons");
+    //  } else{
+    //     document.getElementsByClassName('leftSide')[0].textContent = leftPlayer.name + " = " + game.leftScore  // leftscore data 
+    //     // pass to class name leftSide in Game
+    //  }
+ 
+    //  if (rightPlayer.name.trim().length === 0){
+    //     document.getElementsByClassName('rightSide')[0].textContent = "Romulans = " + game.rightScore // rightscore data 
+    //     // pass to class name rightSide in HTML Game
+    //     sessionStorage.setItem("result", "Romulans");
+    //  } else{
+    //     document.getElementsByClassName('rightSide')[0].textContent = rightPlayer.name + " = " + game.rightScore // rightscore data 
+    //     // pass to class name rightSide in HTML Game
+    //  }
+
+
+     document.getElementsByClassName('leftSide')[0].textContent = leftPlayer.name + " = " + game.leftScore  // leftscore data 
+     // pass to class name leftSide in Game
+     document.getElementsByClassName('rightSide')[0].textContent = rightPlayer.name + " = " + game.rightScore // rightscore data 
+     // pass to class name rightSide in HTML Game
  }
  // End of setDaScore function <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
 
