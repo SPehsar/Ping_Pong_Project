@@ -1,35 +1,36 @@
 
-// *********************************************************************************
-// decalaring and defining the variables
-let player1 = sessionStorage.getItem("leftPlayer");  // Fetch back user's input from 
-// the session storage from previous page
-// verifyName(player1); // ???????
- let player2  = sessionStorage.getItem("rightPlayer");  // Fetch back user's input from  
-// the session storage from previous page
-// verifyName(player2); // ????
-//  let player1 = sessionStorage.getItem("leftPlayer");  // Fetch back user's input from 
-// // the session storage from previous page
-//  let player2  = sessionStorage.getItem("rightPlayer");  // Fetch back user's input from  
-// // the session storage from previous page
- const setMaxScore  = parseInt(sessionStorage.getItem("maxScoreToPlay"));  // Fetch back user's choice from  
-// the session storage from previous page and converting it into a number
- let twoPlayerChoice  = sessionStorage.getItem("twoPlayerGame");  // Fetch back user's choice from  
-// the session storage from previous page
- let onePlayerChoice  = sessionStorage.getItem("onePlayerGamer");  // Fetch back user's choice from  
- // the session storage from previous page
+// Start to declare canvas and its context *****************************************
+  const canvas = document.getElementById('container')
+  const ctx = canvas.getContext("2d")
+  sessionStorage.setItem("result", "None"); // Set the value of the specified 
+// local/session storage item.
+
+// End  to declare canvas and its context *****************************************
+// onePlayerGame
+let leftPaddleSetting ;
+let onePlayerOption  = sessionStorage.getItem("onePlayerGame");  // Fetch back user's radio option from  
+// console.log(onePlayerOption)
+
+// the session storage from previous page 
  let activated = true;
  let hits = 0;
+ let player1 = sessionStorage.getItem("leftPlayer");  // Fetch back user's input from 
+// the session storage from previous page
+ let player2  = sessionStorage.getItem("rightPlayer");  // Fetch back user's input from  
+// the session storage from previous page
+const setMaxScore  = parseInt(sessionStorage.getItem("maxScoreToPlay"));  // Fetch back user's choice from  
+// the session storage from previous page and converting it into a number
+if(onePlayerOption.length<=0){
+    leftPaddleSetting = canvas.height*3.3;
+    const element = document.querySelector('.wrapper');
+    element.style.border = 'black';
 
- // Start to declare canvas and its context *****************************************
- const canvas = document.getElementById('container');
- const ctx = canvas.getContext("2d"); // The CanvasRenderingContext2D interface, 
- // part of the Canvas API, provides the 2D rendering context for the drawing surface 
- // of a <canvas> element. It is used for drawing shapes, text, images, and other objects.
- sessionStorage.setItem("result", "None"); // Set the value of the specified 
- // local/session storage item.
-// End  to declare canvas and its context *****************************************
+    const elements = document.querySelector('.leftSide');
+    elements.style.display = "none";
+} else {
+    leftPaddleSetting = 100;
+}
  
-
 // Wowrk in progress
  class Player {
     constructor(hight, width, positionX ){
@@ -46,45 +47,46 @@ let player1 = sessionStorage.getItem("leftPlayer");  // Fetch back user's input 
  }
 
 // Start to define needed objects ***************************************************
- const ball = {
-     radius: 9,  // large diameter for beginNers
-     color: '#00FF00',  // neon color // Hourbour color
-     positionX: canvas.width / 2 + 9,
-     positionY: canvas.height / 2 + 9,
-     speed_X: 3,  // 1,2,3, low, medium, high
-     speed_Y: 3  // 1,2,3, low, medium, high
- }
- 
- const leftPlayer = {
-     name: player1,
-     height: 100,
-     width: 10,
-     positionX: 10,
-     color: '#39ff14',  // pick color // neon color
-     positionY: canvas.height / 2 - 100 / 2,
-     speed: 10 // 1,2,3, low, medium, high
- }
- 
- const rightPlayer = {
-     name: player2,
-     height: 100,
-     width: 10,
-     color: '#39ff14', // pick color
-     positionX: canvas.width - 20,
-     positionY: canvas.height / 2 - 100 / 2,
-     speed: 10 // 1,2,3, low, medium, high
- }
- // End to define needed objects ********************************************************
+const ball = {
+    radius: 9,  // large diameter for beginNers
+    color: '#00FF00',  // neon color // Hourbour color
+    positionX: canvas.width / 2 + 9,
+    positionY: canvas.height / 2 + 9,
+    speed_X: 3,  // 1,2,3, low, medium, high
+    speed_Y: 3  // 1,2,3, low, medium, high
+}
+
+const leftPlayer = {
+    name: player1,
+    height: 100,
+    width: 10,
+    positionX: 10,
+    color: '#39ff14',  // pick color // neon color
+    positionY: canvas.height / 2 - 100 / 2,
+    speed: 10 // 1,2,3, low, medium, high
+}
+
+const rightPlayer = {
+    name: player2,
+    height: leftPaddleSetting,
+    width: 10,
+    color: '#39ff14', // pick color
+    positionX: canvas.width - 20,
+    positionY: canvas.height / 2 - 100 / 2,
+    speed: 10 // 1,2,3, low, medium, high
+}
+// End to define needed objects ********************************************************
  
 
 
 // Start to set initial setting for the element of the games *****************************
 
  const game = {
+     maximumScore: setMaxScore,  // what top score you want to be
      rightScore: 0,   // intial  score
      leftScore: 0,  // intial  score
      turn: 0,
-     speedIncreaseHit: 3, // number of ticks we want increase the speed
+     speedIncreaseHit: 3 // number of ticks we want increase the speed
  }
  
  const keyPressed = {  // default user controlers set to false
@@ -92,7 +94,6 @@ let player1 = sessionStorage.getItem("leftPlayer");  // Fetch back user's input 
     Down: false,
     W: false,
     S: false
-
  }
 
  // End to set initial setting for the element of the games *******************************
@@ -156,7 +157,6 @@ function drawLeftPlayer() {
         ctx.closePath();
  }
  
- 
  function drawAllObjects() {  // canvas and palyers/ball draw
     ctx.clearRect(0, 0, canvas.width, canvas.height);
      drawLeftPlayer()
@@ -169,9 +169,7 @@ function drawLeftPlayer() {
 
  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< fuctions that we use  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-
-
-  // Start of resetStatsToZero function <><><><><><><><><><><><><><><><><><><><><><><><><><><>
+// Start of resetStatsToZero function <><><><><><><><><><><><><><><><><><><><><><><><><><><>
   function resetStatsToZero(){ //  rsestGame to reset to start clean for next round
     game.leftScore = 0
     game.rightScore = 0
@@ -203,114 +201,47 @@ function drawLeftPlayer() {
 
  // Start of impactDelay function <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
  function impactDelay() {
-     activated = false
-     setTimeout(() => {
-         activated = true
-     }, 1000)
+    activated = false
+    setTimeout(() => {
+        activated = true
+    }, 1000)
  }
- // End of impactDelay function <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
- 
+ // End of impactDelay function <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
 
 
-
-
- function verifyName(nameParam){
-    if (/^[a-zA-Z]+$/.test(nameParam)){ 
-        leftPlayer.name = player1;
-         } else{
-            leftPlayer.name = "Klingon"
-         }
-     
-    if (/^[a-zA-Z]+$/.test(nameParam)){ 
-            rightPlayer.name = player2;
-         } else{
-            rightPlayer.name = "Romulans" 
-         }
- }
-
-
-
-
-
-
-// Start of setDaScore function <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+ // Start of setDaScore function <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
  function setDaScore() { // set how the lose case evaluated
-     if (ball.positionX > canvas.width - (rightPlayer.width)) {
-         game.leftScore++
-         resetBall()
-     } else if (ball.positionX < rightPlayer.width) {
-         game.rightScore++
-         resetBall()
-     }
-    //  /^[a-zA-Z]+$/.test(str)
+    if (ball.positionX > canvas.width - (rightPlayer.width)) {
+        game.leftScore++
+        resetBall()
+    } else if (ball.positionX < rightPlayer.width) {
+        game.rightScore++
+        resetBall()
+    }
+   
+    document.getElementsByClassName('leftSide')[0].textContent = leftPlayer.name + " = " + game.leftScore  // leftscore data 
+    // pass to class name leftSide in Game
+    document.getElementsByClassName('rightSide')[0].textContent = rightPlayer.name + " = " + game.rightScore // rightscore data 
+    // pass to class name rightSide in HTML Game
+}
+ // End of setDaScore function <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>   
 
-
-    // if (/^[a-zA-Z]+$/.test(leftPlayer.name)){ 
-    //     document.getElementsByClassName('leftSide')[0].textContent = leftPlayer.name + " = " + game.leftScore 
-    //     // document.getElementsByClassName('leftSide')[0].textContent = "Klingons = " + game.leftScore  // leftscore data 
-    //     // pass to class name leftSide in Game 
-    //  } else{
-    //     document.getElementsByClassName('leftSide')[0].textContent = "Klingons = " + game.leftScore
-    //     // document.getElementsByClassName('leftSide')[0].textContent = leftPlayer.name + " = " + game.leftScore  // leftscore data 
-    //     // pass to class name leftSide in Game
-    //  }
+ // Start of gameIsCompleted function <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+ function gameIsCompleted(){   //   resultPage feed 
+    if(game.leftScore === game.maximumScore){
+        sessionStorage.setItem("result", leftPlayer.name);  // **** appears on the resultPage
+        window.location.href = "resultPage.html";
+        resetStatsToZero()
+    }else if(game.rightScore === game.maximumScore){
+        sessionStorage.setItem("result", rightPlayer.name);   // **** appears on the resultPage
+        window.location.href = "resultPage.html";
+        resetStatsToZero()
+    }
+}
+// End of gameIsCompleted function <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
  
-    //  if (/^[a-zA-Z]+$/.test(rightPlayer.name)){ 
-    //     document.getElementsByClassName('rightSide')[0].textContent = rightPlayer.name + " = " + game.rightScore
-    //     // document.getElementsByClassName('rightSide')[0].textContent = "Romulans = " + game.rightScore // rightscore data 
-    //     // pass to class name rightSide in HTML Game
-    //  } else{
-    //     document.getElementsByClassName('rightSide')[0].textContent = "Romulans = " + game.rightScore
-    //     // document.getElementsByClassName('rightSide')[0].textContent = rightPlayer.name + " = " + game.rightScore // rightscore data 
-    //     // pass to class name rightSide in HTML Game
-    //  }
 
-
-
-
-    //  if (leftPlayer.name.trim().length === 0){ 
-    //     document.getElementsByClassName('leftSide')[0].textContent = "Klingons = " + game.leftScore  // leftscore data 
-    //     // pass to class name leftSide in Game 
-    //     sessionStorage.setItem("result", "Klingons");
-    //  } else{
-    //     document.getElementsByClassName('leftSide')[0].textContent = leftPlayer.name + " = " + game.leftScore  // leftscore data 
-    //     // pass to class name leftSide in Game
-    //  }
- 
-    //  if (rightPlayer.name.trim().length === 0){
-    //     document.getElementsByClassName('rightSide')[0].textContent = "Romulans = " + game.rightScore // rightscore data 
-    //     // pass to class name rightSide in HTML Game
-    //     sessionStorage.setItem("result", "Romulans");
-    //  } else{
-    //     document.getElementsByClassName('rightSide')[0].textContent = rightPlayer.name + " = " + game.rightScore // rightscore data 
-    //     // pass to class name rightSide in HTML Game
-    //  }
-
-
-     document.getElementsByClassName('leftSide')[0].textContent = leftPlayer.name + " = " + game.leftScore  // leftscore data 
-     // pass to class name leftSide in Game
-     document.getElementsByClassName('rightSide')[0].textContent = rightPlayer.name + " = " + game.rightScore // rightscore data 
-     // pass to class name rightSide in HTML Game
- }
- // End of setDaScore function <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
-
- 
- // Start of gameIsOver function <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
- function gameIsOver(){   //   resultPage feed
-     if(game.leftScore === setMaxScore){
-         sessionStorage.setItem("result", leftPlayer.name);  // **** appears on the resultPage
-         window.location.href = "resultPage.html";
-         resetStatsToZero()
-     }else if(game.rightScore === setMaxScore){
-         sessionStorage.setItem("result", rightPlayer.name);   // **** appears on the resultPage
-         window.location.href = "resultPage.html";
-         resetStatsToZero()
-     }
- }
- // End of gameIsOver function <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
-
-
- // Start of keyStatus function <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+// Start of keyStatus function <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
  function keyStatus() {
     if (keyPressed['Up']) {
         if (rightPlayer.positionY > 0) {
@@ -340,36 +271,36 @@ function drawLeftPlayer() {
 
  // Start of ballMovmentUpdate function <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
  function ballMovmentUpdate() {
-     if ((ball.positionY + ball.radius) >= canvas.height || (ball.positionY - ball.radius) <= 0) {
-         ball.speed_Y = -ball.speed_Y;
-     }   // order is important
- 
-     if (
-         (ball.positionX + ball.radius >= canvas.width - (rightPlayer.width + 10) &&
-             (ball.positionY >= rightPlayer.positionY && ball.positionY <= rightPlayer.positionY + rightPlayer.height)) ||
- 
-         (ball.positionX - ball.radius <= (leftPlayer.width + 10) &&
-             (ball.positionY >= leftPlayer.positionY && ball.positionY <= leftPlayer.positionY + leftPlayer.height))
-     ) // order is important
-     
-            {
-                if (activated) {
-                    let audio = new Audio('media/Pong_sound.mp4');
-                    audio.play();
-                    hits++;
-                    ball.speed_X = -ball.speed_X
-                    impactDelay()
-                }
-            }
- 
-     setDaScore()
-     gameIsOver()
- 
-     ball.positionX += ball.speed_X;
-     ball.positionY += ball.speed_Y;
- }
- // End of ballMovmentUpdate function <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
- 
+    if ((ball.positionY + ball.radius) >= canvas.height || (ball.positionY - ball.radius) <= 0) {
+        ball.speed_Y = -ball.speed_Y;
+    }   // order is important
+
+    if (
+        (ball.positionX + ball.radius >= canvas.width - (rightPlayer.width + 10) &&
+            (ball.positionY >= rightPlayer.positionY && ball.positionY <= rightPlayer.positionY + rightPlayer.height)) ||
+
+        (ball.positionX - ball.radius <= (leftPlayer.width + 10) &&
+            (ball.positionY >= leftPlayer.positionY && ball.positionY <= leftPlayer.positionY + leftPlayer.height))
+    ) // order is important
+    
+           {
+               if (activated) {
+                   let audio = new Audio('media/Pong_sound.mp4');
+                   audio.play();
+                   hits++;
+                   ball.speed_X = -ball.speed_X
+                   impactDelay()
+               }
+           }
+
+    setDaScore()
+    gameIsCompleted()
+
+    ball.positionX += ball.speed_X;
+    ball.positionY += ball.speed_Y;
+}
+// End of ballMovmentUpdate function <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+
  
  // Start loop through game function ********************************************************************************
  function loopingThroughGame() {
@@ -382,30 +313,30 @@ function drawLeftPlayer() {
      // This is a window method.
 
  }
-// nd loop through game function **************************************************************************************
+// End loop through game function **************************************************************************************
  
  
 // Start updateingTheDefault function to set the canvas, ball and players' locations and render ************************
- function updateingTheDefault() {
-     canvas.width = Math.min(window.innerWidth * 0.5, 700)
-     canvas.height = Math.min(window.innerHeight * 0.7, 500)
- 
-     leftPlayer.positionY = canvas.height / 2 - leftPlayer.height / 2
- 
-     rightPlayer.positionX = canvas.width - (rightPlayer.width + 10)
-     rightPlayer.positionY = canvas.height / 2 - rightPlayer.height / 2
+function updateingTheDefault() {
+    canvas.width = Math.min(window.innerWidth * 0.5, 700)
+    canvas.height = Math.min(window.innerHeight * 0.7, 500)
 
-     ball.positionX = canvas.width / 2 + ball.radius
-     ball.positionY = canvas.height / 2 + ball.radius
- }
- // End updateingTheDefault function to set the canvas, ball and players' locations and render **************************
+    leftPlayer.positionY = canvas.height / 2 - leftPlayer.height / 2
+
+    rightPlayer.positionX = canvas.width - (rightPlayer.width + 10)
+    rightPlayer.positionY = canvas.height / 2 - rightPlayer.height / 2
+
+    ball.positionX = canvas.width / 2 + ball.radius
+    ball.positionY = canvas.height / 2 + ball.radius
+}
+// End updateingTheDefault function to set the canvas, ball and players' locations and render **************************
 
 
  // ++++++++++++++++++++++++++++++++++++++++++++++++ Event handlers / listners +++++++++++++++++++++++++++++++++++++++++++
   
 
  document.addEventListener('keyup', (event) => {
-    // let name = event.key;
+    
     let code = event.code;
 
     if (code === 'KeyA') {
@@ -448,6 +379,77 @@ function drawLeftPlayer() {
 
 
 //  ************** Following calls the whole game starts:
- requestAnimationFrame(loopingThroughGame); // This window method tells the browser that you wish to perform an
- // animation and requests that the browser calls a specified function to update an animation before the next repaint.
- updateingTheDefault();   //  call to updateingTheDefault function
+requestAnimationFrame(loopingThroughGame); // This window method tells the browser that you wish to perform an
+// animation and requests that the browser calls a specified function to update an animation before the next repaint.
+updateingTheDefault();   //  call to updateingTheDefault function
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//  function resizeHandler() {
+//     //  if (window.innerWidth < 560) {
+//         //  document.getElementsByClassName('small-device')[0].style.display = "flex";
+//         //  document.getElementsByClassName('canvas-container')[0].style.display = "none";
+//     //  } else {
+//     //     //  document.getElementsByClassName('small-device')[0].style.display = "none";
+//         //  document.getElementsByClassName('canvas-container')[0].style.display = "flex";
+//         //  document.getElementsByClassName('small-device')[0].style.display = "none";
+//     //  }
+ 
+//      updateingTheDefault()
+//  }
+ 
+ 
+ // Two calling functionality
+//  resizeHandler()
+//  window.addEventListener('resize', () => { resizeHandler() })  //un comment in case

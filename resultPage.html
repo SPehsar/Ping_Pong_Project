@@ -12,8 +12,12 @@
 
     <script>
 
+      function goIndexPage() {
+        window.location.href = "index.html";
+      }
+
       function goGamePage() {
-        window.location.href = "gamePage.html";
+        window.location.href = "GamePage.html";
       }
 
     </script>
@@ -37,7 +41,10 @@
     </div>
 
     <div>
-      <button id="play-again-button" onclick="goGamePage()">Play Again</button>
+      <button id="play-again-button"  data-inline="true" onclick="goGamePage()">Play Again</button>
+    </div><br><br><br><br><br>
+    <div>
+      <button id="play-again-button" data-inline="true" style="height:110px;width:800px" onclick="goIndexPage()">Start All Over</button>
     </div>
 
 

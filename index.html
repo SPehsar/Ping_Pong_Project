@@ -7,53 +7,56 @@
     <title>BW Ping Pong</title>
     <link rel="icon" href="images/BookWorm.png" type="image/x-icon" />
     <link href="Stylesheets/indexStyle.css" rel="stylesheet" />
-    <script defer src="JavaScripts/script.js"></script>
     <script>
 
-      function saveNamesInSessionStorage() { // to get 
+    let radioOptionFor1Player;  // to pass to the game page through session stotrage
+    // two different function to enable or diasable radio option to distinct the 
+    // activity, although they can be in one function, but    
+    function EnableDisableTextBox(){
+        let radioOptionP1 = document.getElementById("onePl");
+        if(radioOptionP1.value ==="onePlayer"){
+          document.getElementById("play2").disabled = true;
+          radioOptionFor1Player = "";
+        } 
 
+    }
 
-      //   var player11 = document.getElementById("play1").value
-      //     var player22 = document.getElementById("play2").value
-      //     var maxScore33 = document.getElementById("maxScore").value
-      //     var isNum = " ";
+    function EnableDisableTextBox2() {
+        let radioOptionP2 = document.getElementById("twoPl");
+        if(radioOptionP2.value ==="twoPlayer") {
+          document.getElementById("play2").disabled = false;
+          radioOptionFor1Player = "False";
+        }
+    }
+    // End of the Functions----------------------------------------------------------
 
-      //     isNum = isNum + isNaN(player11)
+    //  Makes splash page be invisable after clicking on first "Let's play" button 
+    function switchVisible() {
+        if (document.getElementById("Div1")) {
+          if (document.getElementById("Div1").style.display !== "none") {
+            document.getElementById("Div1").style.display = "none";
+            document.getElementById("Div2").style.display = "block";
+          }
+        }
+      }
+    // End of the Function ----------------------------------------------------------
 
-      //     function run () {
-      //         var player11 = document.getElementById("play1").value
-      //         var player22 = document.getElementById("play2").value
-              
-      // }
-
-      // if (isNum == true || player11.length ==0 || player22.length ==0) {
-      //         alert("YOU NEED TO ENTER FIRST AND LAST NAME THAT ARE NOT NUMBER!");
-      //     }//go back to Entrance page
-
-      // while (player11.length ==0) {
-      //     window.alert ("you didn't enter a name ")
-      //     document.getElementById("block").value}//go back to Entrance page
-
-      // while (player22.length ==0) {
-      //     window.alert ("you didn't enter a name ")
-      //     document.getElementById("block").value}//go back to Entrance page
-
+    // This does a lot of session storage activity and send user to the game page  
+    function saveNamesInSessionStorage() { 
       let player1;
       let player2;
       var letters = /^[A-Za-z]+$/;
 
-
-
-
       let p1 = document.getElementById("play1").value; // Getting value of user's input
       let p2 = document.getElementById("play2").value; // Getting value of user's input
       let maximumScore = document.getElementById("maxScore").value; // Getting value of user's input
-      let playerCount2 = document.getElementById("twoPl").value; // Getting value of user's input
-      let playerCount1 = document.getElementById("onePl").value; // Getting value of user's input
+      // let playerCount2 = document.getElementById("twoPl").value; // Getting value of user's input
+      // let playerCount1 = document.getElementById("onePl").value; // Getting value of user's input
 
+      // This is to verify the p1 and p2 is all charcters or not. 
+      // If not, gane assign a name to each one.
       if (/^[a-zA-Z]+$/.test(p1)){ 
         player1 = p1;
-        
          } else{
           player1= "Klingon"
          }
@@ -61,14 +64,8 @@
       if (/^[a-zA-Z]+$/.test(p2)){ 
             player2 = p2;
          } else{
-          player2 = "Romulans" 
+          player2 = "Colossus" 
          }
-
-
-
-
-
-
 
       sessionStorage.setItem("leftPlayer", player1); // Storing user's input in a storage 
       window.location.href = "gamePage.html";
@@ -79,32 +76,24 @@
       sessionStorage.setItem("maxScoreToPlay", maximumScore); // Storing user's input in a storage 
       window.location.href = "gamePage.html";
 
-      sessionStorage.setItem("twoPlayerGame", playerCount2); // Storing user's input in a storage 
-      window.location.href = "gamePage.html";
+      // sessionStorage.setItem("twoPlayerGame", playerCount2); // Storing user's input in a storage 
+      // window.location.href = "gamePage.html";
 
-      sessionStorage.setItem("onePlayerGame", playerCount1); // Storing user's input in a storage 
+      sessionStorage.setItem("onePlayerGame", radioOptionFor1Player); // Storing user's input in a storage 
       window.location.href = "gamePage.html";
       }
+      // End of the Function ------------------------------------------------------------------------------------
 
-      function switchVisible() {
-        if (document.getElementById("Div1")) {
-          if (document.getElementById("Div1").style.display !== "none") {
-            document.getElementById("Div1").style.display = "none";
-            document.getElementById("Div2").style.display = "block";
-          }
-        }
-      }
 
-          
-   
     </script>
 
   </head>
 
-  <body>
+  <body id="final-example">
 
     <div id="Div1" style="text-align: center">
       <p class="result">Welcome to the Ping Pong Game Page</p>
+
       <div>
         <video class="video1" width="420" autoplay>
           <source src="media/Lets_Play_Pong.mp4" type="video/mp4" />
@@ -119,43 +108,52 @@
           </button>
         </div>
       </div>
+
     </div>
 
-    <div id="Div2">
+    <div id="Div2" class="contact">
       <p class="result">ENTER GAME REQUIRED INFORMATION</p>
-      <br />
+      <br/>
 
-      <div class="col-lg-4 col-md-4 col-sm-12 form">
-        <form>
+        <div class="container">
+        <form id="contact-form">
           <small class="form-text text-muted"></small>
           <div>
             <label>Number of Players: </label>
             <label>
-              <input type="radio" id="twoPl" value="twoPlayer" name="numOfPlayer" checked="checked" /> Two Players </label>
+              <input type="radio" id="twoPl" value="twoPlayer" name="numOfPlayer"  onclick="EnableDisableTextBox2()" checked/> Two Players </label>
             <label>
-              <input value="onePlayer" id="onePl" type="radio" name="numOfPlayer"> One Player</label>
+              <input value="onePlayer" id="onePl" type="radio" name="numOfPlayer" onclick="EnableDisableTextBox()" /> One Player</label>
           </div> <br>
-        <table><tr><td>
-          <div class="form-group">
-            <label for="player1">Player-1 Name:</label>
-            <a href="#" alt="Alphabatic only" class="tooltip">  
-            <input type="text" class="form-control" id="play1" name="text1" aria-describedby="play1help"/>
-          </div></td></tr>
+        
+          <table>
+              <tr><td>
 
-          <tr><td>
+                <div class="form-group">
+                  <label for="player1">Player-1 First Name:</label>
+                  <a href="#" alt="Alphabatic only - No Blank or Number" class="tooltip">  
+                  <input type="text" class="form-control" id="play1" name="text1" size="27" placeholder="Player on the left" aria-describedby="play1help"/>
+                </div>
 
-          <div class="form-group">
-            <label for="player1">Player-2 Name: </label>
-            <a href="#" alt="Alphabatic only" class="tooltip">  
-            <input type="text" class="form-control" id="play2" aria-describedby="play1help"/>
-          </div>
-        </td></tr>
-        </table><br>
+              </td></tr>
+
+              <tr><td>
+
+                <div class="form-group">
+                  <label for="player1">Player-2 First Name: </label>
+                  <a href="#" alt="Alphabatic only" class="tooltip">  
+                  <input type="text" class="form-control" id="play2" size="27" placeholder="Player on the right:" aria-describedby="play1help"/>
+                </div>
+
+                </td></tr>
+
+          </table><br>
 
           <div>
             <label for="maxScore">Desired Maximum Score: </label>
             <select id="maxScore" name="maxScore">
               <option disabled selected>--Choose--</option>
+              <option>1</option>
               <option>3</option>
               <option>5</option>
               <option>10</option>
@@ -173,37 +171,19 @@
           <button id="gameStart-button2" onclick="saveNamesInSessionStorage()">Let's Play</button>
         </div>
       </div>
+      <div>
+        <br><br><br><br><br>
+
+        <p id="rcorners4"><span style="color: black"><span STYLE="font-size:20px;"><strong>Instructions</strong></span></span><br>
+          To play the game provide the required information above.  If you do not follow the rules for name inputs, 
+          system pick a name for you when you start playing. You can set maximum desired score from the drop-down list. 
+          If you want  <u>to play forever</u> (power to you) and select no maximum score. To move paddles:<br><br>
+          <span style="color: brown"><em>Left side player:</em></span> Use letter “Q” key on the keyboard to move up, letter “S” key on the keyboard to move down <br><br>
+          <span style="color: brown"><em>Right side player:</em></span> Use letter arrow up key on the keyboard to move up, arrow down key on the keyboard to move down.  in one player choice you play agaist computer till you loose.
+           </p>
+      </div>
       
     </div>
   </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

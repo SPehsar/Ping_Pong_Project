@@ -4,6 +4,7 @@
     box-sizing: border-box;
 }
 
+/* this set the body for the gamePage */
 body{
     position: relative;
     background: black;
@@ -11,6 +12,7 @@ body{
     font-family: 'Cinzel',serif;
 }
 
+/* this as it says contains elements of the game - mother */
 .canvas-container{
     height: 100vh;
     width: 100%;
@@ -20,7 +22,8 @@ body{
     justify-content: center;
 }
 
-.canvas-container p{  /* Score */
+ /* this as it says contains p elements of canvas (the container, the mother) */
+.canvas-container p{ 
     font-size: 30px;
     font-weight: 600;
     color: rgb(122, 195, 126);
@@ -28,8 +31,9 @@ body{
     text-align: center;
 }
 
-.canvas-container .wrapper{
-    border: 4px solid white;
+ /* This set the child of mother, the wrapper/border */
+.wrapper {  
+    border: 4px solid rgb(15, 80, 8);
     border-radius: 5px;
     display: flex;
     align-items: center;
@@ -37,12 +41,12 @@ body{
     box-shadow: 0px 0px 20px #91c2eb;
 }
 
-/* Score of left player  */
-.canvas-container p:first-child{
+/* Mother and child relationship, the setting displays left player score  */
+.canvas-container p:first-child  {
     margin-right: 60px;
 }
 
-/* Score of right player  */
+/* Mother and child relationship, the setting displays right player score  */
 .canvas-container p:last-child{
     margin-left: 60px;
 }
