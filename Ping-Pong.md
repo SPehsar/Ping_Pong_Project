@@ -1,6 +1,6 @@
 ![Diagram Description automatically generated](media/4c5b45cf82d16557d5dfe2b4274e3c1a.tmp)
 
-**![Text Description automatically generated with low confidence](media/d22939a9f933f18e8c03c163d7c39fdb.tmp)**
+**![](media/f92db42a1a08739f992aead3212d73a0.tmp)**
 
 **HTML Pages1**
 
@@ -14,45 +14,45 @@ Type chapter title (level 2)5
 
 Type chapter title (level 3)6
 
-**Selecting Canvas1**
+**Selecting Canvas7**
 
-Type chapter title (level 2)2
+Type chapter title (level 2)8
 
-Type chapter title (level 3)3
+Type chapter title (level 3)9
 
-**Draw Shapes4**
+**Draw Shapes10**
 
-Type chapter title (level 2)5
+Type chapter title (level 2)11
 
-Type chapter title (level 3)6
+Type chapter title (level 3)12
 
-**Required Objects1**
+**Required Objects**13
 
-Type chapter title (level 2)2
+Type chapter title (level 2)14
 
-Type chapter title (level 3)3
+Type chapter title (level 3)15
 
-**Style Sheets4**
+**Style Sheets16**
 
-Type chapter title (level 2)5
+Type chapter title (level 2)17
 
-Type chapter title (level 3)6
+Type chapter title (level 3)18
 
-**Multimedia1**
+**Multimedia19**
 
-Type chapter title (level 2)2
+Type chapter title (level 2)20
 
-Type chapter title (level 3)3
+Type chapter title (level 3)21
 
-**Create Functions 4**
+**Create Functions 22**
 
-Type chapter title (level 2)5
+Type chapter title (level 2)23
 
-Type chapter title (level 3)6
+Type chapter title (level 3)24
 
-**Credits and references 4**
+**Credits and references 25**
 
-Type chapter title (level 2)5
+Type chapter title (level 2)26
 
 # Summary
 
@@ -102,4 +102,12 @@ Studio77 FX vector
 
 # 
 
-![Background pattern Description automatically generated](media/e1192f16ac16f56a2ba9bdb52877ec3b.jpeg)![Background pattern Description automatically generated](media/e1192f16ac16f56a2ba9bdb52877ec3b.jpeg)
+# 
+
+# 
+
+# 
+
+# 
+
+![A picture containing text, vector graphics Description automatically generated](media/57e94fffe7d670a32545560a40c82f4d.tmp)
