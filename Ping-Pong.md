@@ -103,9 +103,3 @@ Studio77 FX vector
 # 
 
 ![Background pattern Description automatically generated](media/e1192f16ac16f56a2ba9bdb52877ec3b.jpeg)![Background pattern Description automatically generated](media/e1192f16ac16f56a2ba9bdb52877ec3b.jpeg)
-
-Ball Image info
-
-Original location of x and Y divided by two since we want it to be at the center.
-
-Just FYI, velocity is nothing but the speed minus direction.
